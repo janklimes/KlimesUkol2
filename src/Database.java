@@ -1,13 +1,9 @@
 
 public class Database {
 	private double uvazek;
-	private static double maxUvazek = 1;
+	private static final double MAXUVAZEK = 1;
 	private String jmeno;
 	private int rok;
-	
-	public static void setMaxUvazek(double maxUvazek){
-		maxUvazek = maxUvazek;
-	}
 
 	Database(String jmeno, int rok) {
 		this.jmeno = jmeno;
@@ -16,7 +12,7 @@ public class Database {
 
 	public boolean zadejNovyUvazek(double newUvazek) {
 		double soucet = newUvazek + this.uvazek;
-		if (soucet > maxUvazek) {
+		if (soucet > MAXUVAZEK) {
 			return false;
 		} else {
 			this.uvazek = this.uvazek + newUvazek;

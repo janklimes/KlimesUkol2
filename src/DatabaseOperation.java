@@ -12,10 +12,6 @@ public class DatabaseOperation {
 		poleDatabase[1] = d2;
 		poleDatabase[2] = d3;
 
-		System.out.println(poleDatabase[0].getJmeno());
-		System.out.println(poleDatabase[0].getRok());
-		System.out.println(poleDatabase[0].getUvazek());
-
 		for (;;) // nekonecna smycka
 		{
 			System.out.println("Zadej id:");
@@ -40,22 +36,21 @@ public class DatabaseOperation {
 				Scanner sc1 = new Scanner(System.in);
 				boolean jecislo1 = sc1.hasNextDouble();
 
-				// validace vstupu na cislo double, musi se yadat s carkou 1,2
+				// validace vstupu na cislo double, musi se zadat s carkou 1,2
 				if (jecislo1 == false) {
 					System.out.println("Neni cislo");
 				} else {
-
+					//pridani uvazku pres metodu tridy
 					double novyuvazek = sc1.nextDouble();
 					boolean podariloSe = poleDatabase[cislo].zadejNovyUvazek(novyuvazek);
 					if (podariloSe == true) {
-						System.out.println("Podarilo se, novy celkovy uvayek je: " + poleDatabase[cislo].getUvazek());
+						System.out.println(poleDatabase[cislo].getJmeno());
+						System.out.println(poleDatabase[cislo].getRok());
+						System.out.println(poleDatabase[cislo].getUvazek());
+
 					} else {
-						System.out.println("Nepodarilo se, prekrocen maximalni limit");
+						System.out.println("Nepodarilo se, prekrocen maximalni limit uvazku!");
 					}
-
-					//System.out.println("Zadal jsi novy uvazek: " + novyuvazek);
-
-					//poleDatabase[cislo].setUvazek(novyuvazek);
 
 				}
 
