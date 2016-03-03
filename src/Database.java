@@ -1,12 +1,30 @@
 
 public class Database {
-	Database(double uvazek)
-	{
-		UVAZEKMAX = 1;
-		
-	}
+	private double uvazek;
+	private static double maxUvazek = 1;
+	private String jmeno;
+	private int rok;
 	
-public double getUvazek() {
+	public static void setMaxUvazek(double maxUvazek){
+		maxUvazek = maxUvazek;
+	}
+
+	Database(String jmeno, int rok) {
+		this.jmeno = jmeno;
+		this.rok = rok;
+	}
+
+	public boolean zadejNovyUvazek(double newUvazek) {
+		double soucet = newUvazek + this.uvazek;
+		if (soucet > maxUvazek) {
+			return false;
+		} else {
+			this.uvazek = this.uvazek + newUvazek;
+			return true;
+		}
+	}
+
+	public double getUvazek() {
 		return uvazek;
 	}
 
@@ -14,7 +32,7 @@ public double getUvazek() {
 		this.uvazek = uvazek;
 	}
 
-public String getJmeno() {
+	public String getJmeno() {
 		return jmeno;
 	}
 
@@ -22,17 +40,12 @@ public String getJmeno() {
 		this.jmeno = string;
 	}
 
-public int getRok() {
+	public int getRok() {
 		return rok;
 	}
 
 	public void setRok(int rok) {
 		this.rok = rok;
 	}
-
-private double uvazek;
-private static double UVAZEKMAX;
-private String jmeno;
-private int rok;
 
 }
