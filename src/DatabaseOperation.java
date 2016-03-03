@@ -3,33 +3,18 @@ import java.util.Scanner;
 public class DatabaseOperation {
 
 	public static void main(String[] args) {
+		Database d1 = new Database(args[0], Integer.valueOf(args[1]));
+		Database d2 = new Database(args[2], Integer.valueOf(args[3]));
+		Database d3 = new Database(args[4], Integer.valueOf(args[5]));
+
 		Database[] poleDatabase = new Database[3];
+		poleDatabase[0] = d1;
+		poleDatabase[1] = d2;
+		poleDatabase[2] = d3;
 
-		//vytvorit pole
-		for (int i = 0; i < poleDatabase.length; i++) {
-			poleDatabase[i] = new Database(i + 1);
-		}
-
-		//naplnit pole
-		poleDatabase[0].setJmeno("Klimes");
-		poleDatabase[0].setRok(1979);
-		poleDatabase[0].setUvazek(1);
-
-		poleDatabase[1].setJmeno("Novak");
-		poleDatabase[1].setRok(1980);
-		poleDatabase[1].setUvazek(0.8);
-
-		poleDatabase[2].setJmeno("Novakova");
-		poleDatabase[2].setRok(1982);
-		poleDatabase[2].setUvazek(1.5);
-
-		//vypsat obsah pole
-		for (int i = 0; i < poleDatabase.length; i++) {
-			System.out.println(poleDatabase[i].getJmeno());
-			System.out.println(poleDatabase[i].getRok());
-			System.out.println(poleDatabase[i].getUvazek());
-
-		}
+		System.out.println(poleDatabase[0].getJmeno());
+		System.out.println(poleDatabase[0].getRok());
+		System.out.println(poleDatabase[0].getUvazek());
 
 		for (;;) // nekonecna smycka
 		{
@@ -50,7 +35,7 @@ public class DatabaseOperation {
 				System.out.println(poleDatabase[cislo].getRok());
 				System.out.println(poleDatabase[cislo].getUvazek());
 
-				//zadani uvazku
+				// zadani uvazku
 				System.out.println("Zadej dalsi uvazek:");
 				Scanner sc1 = new Scanner(System.in);
 				boolean jecislo1 = sc1.hasNextDouble();
@@ -61,10 +46,16 @@ public class DatabaseOperation {
 				} else {
 
 					double novyuvazek = sc1.nextDouble();
+					boolean podariloSe = poleDatabase[cislo].zadejNovyUvazek(novyuvazek);
+					if (podariloSe == true) {
+						System.out.println("Podarilo se, novy celkovy uvayek je: " + poleDatabase[cislo].getUvazek());
+					} else {
+						System.out.println("Nepodarilo se, prekrocen maximalni limit");
+					}
 
-					System.out.println("Zadal jsi novy uvazek: " + novyuvazek);
+					//System.out.println("Zadal jsi novy uvazek: " + novyuvazek);
 
-					poleDatabase[cislo].setUvazek(novyuvazek);
+					//poleDatabase[cislo].setUvazek(novyuvazek);
 
 				}
 
